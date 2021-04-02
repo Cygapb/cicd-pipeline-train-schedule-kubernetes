@@ -3,7 +3,7 @@ pipeline {
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "cygarpb/train-schedule"
-        PROJECT_ID = 'cicd-pipeline-train-schedule-kubernetes'
+       // PROJECT_ID = 'cicd-pipeline-train-schedule-kubernetes'
         CLUSTER_NAME = 'k8s'
         LOCATION = 'us-central1'
         CREDENTIALS_ID = 'k8s'
