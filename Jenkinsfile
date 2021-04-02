@@ -3,6 +3,10 @@ pipeline {
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "cygarpb/train-schedule"
+        PROJECT_ID = 'My First Project'
+        CLUSTER_NAME = 'k8s'
+        LOCATION = 'us-central1'
+        CREDENTIALS_ID = 'k8s'
     }
     stages {
         stage('Build') {
@@ -42,13 +46,8 @@ pipeline {
             when {
                 branch 'master'
             }
-            steps {
-                input 'Deploy to Production?'
-                milestone(1)
-                kubernetesDeploy(
-                    KubernetesEngineBuilder: 'k8s',
-                    configs: 'train-schedule-kube.yaml',
-                    enableConfigSubstitution: true
+            steps{
+                step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'train-schedule-kube.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
                 )
             }
         }
