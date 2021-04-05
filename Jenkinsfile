@@ -3,10 +3,10 @@ pipeline {
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
         DOCKER_IMAGE_NAME = "cygarpb/train-schedule"
-		PROJECT_ID = 'dynamic-pivot-282919'
+	PROJECT_ID = 'dynamic-pivot-282919'
         CLUSTER_NAME = 'k8s'
         LOCATION = 'us-central1'
-        CREDENTIALS_ID = 'k8s'
+        CREDENTIALS_ID = 'k8s-service-account@dynamic-pivot-282919.iam.gserviceaccount.com'
     }
     stages {
         stage('Build') {
