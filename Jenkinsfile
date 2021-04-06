@@ -6,7 +6,7 @@ pipeline {
 	PROJECT_ID = 'dynamic-pivot-282919'
         CLUSTER_NAME = 'k8s'
         LOCATION = 'us-central1'
-        CREDENTIALS_ID = 'k8s'
+        CREDENTIALS_ID = '45f84520e7afa3627309481d1d760ae196220b68'
     }
     stages {
         stage('Build') {
