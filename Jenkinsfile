@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         //be sure to replace "willbla" with your own Docker Hub username
-        //DOCKER_IMAGE_NAME = "cygarpb/train-schedule"
+        DOCKER_IMAGE_NAME = "cygarpb/train-schedule"
 	PROJECT_ID = 'dynamic-pivot-282919'
         CLUSTER_NAME = 'k8s'
         LOCATION = 'us-central1'
@@ -22,7 +22,7 @@ pipeline {
             }
             steps {
                 script {
-                    app = docker.build("cygarpb/train-schedule")
+                    app = docker.build('DOCKER_IMAGE_NAME')
                     app.inside {
                         sh 'echo Hello, World!'
                     }
